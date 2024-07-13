@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Order } from "./Order";
 
 @Entity('users')
 export class User {
@@ -27,12 +28,12 @@ export class User {
     })
     password: string;
 
-    // Armazena a data de criação
     @CreateDateColumn({ type: 'timestamp' })
     created_at: Date;
 
-    // Armazena a data da última modificação
     @UpdateDateColumn({ type: 'timestamp' })
-    modified_at: Date;   
-
+    modified_at: Date;
+    
+    @OneToMany(() => Order, (order) => order.user)
+    orders: Order[]
 }
