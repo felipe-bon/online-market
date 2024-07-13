@@ -3,6 +3,7 @@ import { BadRequestError, unathorizedError } from "../helpers/api-errors";
 import { userRepository } from "../repositories/userRepository";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
+import { cartRepository } from "../repositories/cartRepository";
 
 export class UserController{
 
@@ -35,6 +36,11 @@ export class UserController{
         })
 
         await userRepository.save(newUser)
+        const newCart = cartRepository.create({
+            user:newUser
+        }) 
+        await cartRepository.save(newCart)
+
         const {password: _, ...user} = newUser
         return res.status(201).json(user);
     }
