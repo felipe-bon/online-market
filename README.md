@@ -1,5 +1,5 @@
 # Online Market System
-## This project aims to create an online store for an existing physical market using Express, TypeScript, and TypeORM. The system allows customers to browse and purchase products from the market remotely. 
+## This project is under development and aims to create an online store for an existing physical market using Express, TypeScript, and TypeORM. The system allows customers to browse and purchase products from the market remotely. 
 
 ## Key features:
 
